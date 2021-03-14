@@ -1,5 +1,40 @@
 <?php
 
+0==null==false;
+0!==null!==false;
+
+
+// << 这个表示二进制
+// 1 << 0 等于 001 等于 1
+// 1 << 1 等于 010 等于 2
+// 1 << 2 等于 100 等于 4
+
+// 可用于常量值,结果一样
+const TEST        = 1 << 0;
+const TEST        =1;
+
+// 优点： 取值的话比较方便，而且性能高，比in_array()性能高
+
+
+compact(); // 函数创建一个包含变量名和它们的值的数组。
+
+$filter = [['effect_time'=>111,'kind_name'=>22,'part_name'=>33]];
+$kinds = collect($filter)->pluck('effect_time', 'kind_name')->toArray();
+$parts = collect($filter)->pluck('effect_time', 'part_name')->toArray();
+dd(compact('kinds', 'parts')); // 等同以下写法
+dd(compact(['kinds'], 'parts'));
+
+// 结果：
+ [
+  "kinds" =>  [
+        22 => 111
+    ],
+  "parts" =>  [
+        33 => 111
+    ],
+  ];
+
+
 // 获取当天时间 （当天凌晨时间）
 strtotime(date("Y-m-d",time()));
 
